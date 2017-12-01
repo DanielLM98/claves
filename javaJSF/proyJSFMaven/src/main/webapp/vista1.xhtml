@@ -6,8 +6,14 @@
 </h:head>
 <h:body>
 <h2>CRUD Primer estadio</h2>
-<h3>Add Data</h3>
+<h3>Añade Datos</h3>
 <h:form>
+<p>Nombre:
+<h:inputText value="#{obj.nombre}"/>
+</p>
+<p> Ciudad:
+<h:inputText value="#{obj.ciudad}"/>
+</p>
 <p>Key:
 <h:inputText value="#{obj.key}"/>
 </p>
@@ -15,7 +21,7 @@
 <h:inputText value="#{obj.value}" />
 </p>
 <p>
-<h:commandButton value="add" action="#{obj.add}" />
+<h:commandButton value="Añadir" action="#{obj.add}" />
 </p>
 </h:form>
 <h:panelGroup layout="block" id="container" rendered="#{obj.good}">
@@ -25,6 +31,16 @@
   <h:column>
     #{obj.listClaves.indexOf(item)}
   </h:column>
+  <h:column>
+   <h:outputText value="#{item.nombre}" rendered="#{item.nombre ne obj.last}" />
+   <b><i><h:outputText value="#{item.nombre}" rendered="#{item.nombre eq obj.last}" /></i></b>
+  </h:column>
+  <h:column>
+   <h:outputText value="#{item.ciudad}" rendered="#{item.ciudad ne obj.last}" />
+   <b><i><h:outputText value="#{item.ciudad}" rendered="#{item.ciudad eq obj.last}" /></i></b>
+  </h:column>
+
+
   <h:column>
    <h:outputText value="#{item.key}" rendered="#{item.key ne obj.last}" />
    <b><i><h:outputText value="#{item.key}" rendered="#{item.key eq obj.last}" /></i></b>
